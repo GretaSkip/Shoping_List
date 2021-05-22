@@ -68,7 +68,7 @@ function addNewTodo() {
     //2 Get Description from document variable
     let description = document.getElementById("list-quantity").value;
     //3 create todo object with received name and description
-    let description = document.getElementById("list-category").value;
+    let category = document.getElementById("list-category").value;
     
     var todo = {
         id:  parseInt(sessionStorage.getItem("id")) + 1,
