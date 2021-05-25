@@ -35,10 +35,12 @@ function updateHtmlTable() {
         let tableRow = `<tr>
 
                             <td>${todo.name}</td>
-                            <td>${todo.description}</td>`+
+                            <td>${todo.description}</td>
+                            <td>${todo.description}</td>`
+                            +
                            `<td>
                            <div class="edit btn btn-warning" id="edit-${todo.id}">Edit</div>
-                           <div class="delete btn btn-danger" id="${todo.id}">trinti irasa</div>
+                           <div class="delete btn btn-danger" id="${todo.id}">Delete</div>
                            </td>
 
                             <td>`+
@@ -133,7 +135,7 @@ function inputValidation2() {
         return false;
     }
     document.getElementById("error").classList.add('success');
-    document.getElementById("error").innerHTML += "<h1>Jums pavyko prideti irasa</h1>";
+    document.getElementById("error").innerHTML += "<h1>Item added successfully!</h1>";
        
     return true;
 }
