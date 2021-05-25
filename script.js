@@ -23,24 +23,24 @@ let globalVariable = 5;
 updateHtmlTable();
 function updateHtmlTable() {
     let generatedHtml = "";
-    let todos = JSON.parse( sessionStorage.getItem('data')  );
-    if(todos === null){
+    let shoplist = JSON.parse( sessionStorage.getItem('data')  );
+    if(shoplist === null){
         sessionStorage.setItem("data", JSON.stringify( [] ));
         sessionStorage.setItem("id", "0");
         return;
     }
-    for (let i = 0; i < todos.length; i++) {
-        const todo = todos[i]; 
+    for (let i = 0; i < shoplist.length; i++) {
+        const shopinglist = shoplist[i]; 
         //let tableRow = `<tr><td>${todo.name}</td><td>${todo.description}</td></tr>`;
         let tableRow = `<tr>
 
-                            <td>${todo.name}</td>
-                            <td>${todo.description}</td>
-                            <td>${todo.description}</td>`
+                            <td>${shopinglist.name}</td>
+                            <td>${shopinglist.description}</td>
+                            <td>${shopinglist.description}</td>`
                             +
                            `<td>
-                           <div class="edit btn btn-warning" id="edit-${todo.id}">Edit</div>
-                           <div class="delete btn btn-danger" id="${todo.id}">Delete</div>
+                           <div class="edit btn btn-warning" id="edit-${shopinglist.id}">Edit</div>
+                           <div class="delete btn btn-danger" id="${shopinglist.id}">Delete</div>
                            </td>
 
                             <td>`+
@@ -102,15 +102,15 @@ function inputValidation() {
     }
 
     if( !isValid("list-quantity") ){
-        document.getElementById("error").innerHTML += '<h1 >Forma negali buti tuscia</h1>';
+        document.getElementById("error").innerHTML += '<h1 >Please fill the form</h1>';
     }
     
     if( !isValid("list-item") ){
-        document.getElementById("error").innerHTML += "<h1>Forma negali buti be pavadinimo</h1>";
+        document.getElementById("error").innerHTML += "<h1>Please fill the Item</h1>";
     }
 
     if( !isValid("list-category") ){
-        document.getElementById("error").innerHTML += "<h1>Forma negali buti be pavadinimo</h1>";
+        document.getElementById("error").innerHTML += "<h1>Please fill the form</h1>";
     }
 
         return false;
@@ -123,14 +123,14 @@ function inputValidation2() {
 
     if( !isValid("list-item") &&
     !isValid("list-quantity") ){
-        document.getElementById("error").innerHTML += "<h1>Forma negali buti tuscia</h1>";
+        document.getElementById("error").innerHTML += "<h1>Please fill the form</h1>";
         document.getElementById("error").classList.add('error');
         return false;
     }
 
     if( !isValid("list-item") &&
     isValid("list-quantity") ){
-        document.getElementById("error").innerHTML += "<h1>Forma negali buti be pavadinimo</h1>";
+        document.getElementById("error").innerHTML += "<h1>Please fill the Item</h1>";
         document.getElementById("error").classList.add('error');
         return false;
     }
