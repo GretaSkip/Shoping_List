@@ -34,9 +34,9 @@ function updateHtmlTable() {
         //let tableRow = `<tr><td>${todo.name}</td><td>${todo.description}</td></tr>`;
         let tableRow = `<tr>
 
-                            <td>${shopinglist.name}</td>
-                            <td>${shopinglist.description}</td>
-                            <td>${shopinglist.description}</td>`
+                            <td>${shopinglist.item}</td>
+                            <td>${shopinglist.quantity}</td>
+                            <td>${shopinglist.category}</td>`
                             +
                            `<td>
                            <div class="edit btn btn-warning" id="edit-${shopinglist.id}">Edit</div>
@@ -66,16 +66,17 @@ function addNewTodo() {
     let todos = JSON.parse( sessionStorage.getItem('data')  ); 
     
     //1 Get Name from document variable in form
-    let nameValue = document.getElementById("list-item").value;
+    let itemValue = document.getElementById("list-item").value;
     //2 Get Description from document variable
-    let description = document.getElementById("list-quantity").value;
+    let quantity = document.getElementById("list-quantity").value;
     //3 create todo object with received name and description
     let category = document.getElementById("list-category").value;
-    
+
     var todo = {
         id:  parseInt(sessionStorage.getItem("id")) + 1,
-        name: nameValue,
-        description: description
+        item: itemValue,
+        quantity: quantity,
+        category: category
     }
 
     //4 add new todo to todoslist
@@ -161,10 +162,10 @@ function editEntry(id){
 function activateEditMode(todo){
     console.log(todo);
     //Get Html elements of Name, description
-    document.getElementById("list-item").value = todo.name;
-    document.getElementById("list-quantity").value = todo.description;
-    document.getElementById("list-category").value = todo.description;
-    document.getElementById("todo-id").value = todo.id;
+    document.getElementById("list-item").value = todo.item;
+    document.getElementById("list-quantity").value = todo.quantity;
+    document.getElementById("list-category").value = todo.category;
+    document.getElementById("shoplist-id").value = todo.id;
 
     //Update those html elements with todo.name, todo.description
     //Unhide the EditButton
@@ -181,13 +182,15 @@ function editTodo(){
     let todos = JSON.parse( sessionStorage.getItem('data')  ); 
     let todo = {
         "id": "",
-        "name": "",
-        "description": ""
+        "item": "",
+        "quantity": "",
+        "category": ""
+
     }
     
-    todo.id = document.getElementById("todo-id").value;
-    todo.name = document.getElementById("list-item").value;
-    todo.description = document.getElementById("list-quantity").value;
+    todo.id = document.getElementById("shoplist-id").value;
+    todo.item = document.getElementById("list-item").value;
+    todo.quantity = document.getElementById("list-quantity").value;
     todo.category = document.getElementById("list-category").value;
     
     for (let i = 0; i < todos.length; i++) {
