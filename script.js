@@ -1,23 +1,5 @@
 
-// sessionStorage.setItem("data",        
-// JSON.stringify( [
-//         {   id: 1,
-//             name: 1,
-//             description: 'description'
-//         },
-//         {   id: 2,
-//             name: 2,
-//             description: 'description'
-//         },
-//         {   id: 3,
-//             name: 3,
-//             description: 'description'
-//         }
-//     ] )
-    
-// ); 
 let globalVariable = 5;
-// pass by reference or pass by value;
 
 
 updateHtmlTable();
@@ -31,7 +13,7 @@ function updateHtmlTable() {
     }
     for (let i = 0; i < shoplist.length; i++) {
         const shopinglist = shoplist[i]; 
-        //let tableRow = `<tr><td>${todo.name}</td><td>${todo.description}</td></tr>`;
+        
         let tableRow = `<tr>
 
                             <td>${shopinglist.item}</td>
@@ -44,7 +26,7 @@ function updateHtmlTable() {
                            </td>
 
                             <td>`+
-                            // <div class="delete btn btn-danger" onclick="deleteEntry(${todo.id});">trinti irasa</div>
+                           
                             `</td>
                         </tr>`               
                         
@@ -65,11 +47,11 @@ function addNewTodo() {
   
     let todos = JSON.parse( sessionStorage.getItem('data')  ); 
     
-    //1 Get Name from document variable in form
+   
     let itemValue = document.getElementById("list-item").value;
-    //2 Get Description from document variable
+    
     let quantity = document.getElementById("list-quantity").value;
-    //3 create todo object with received name and description
+    
     let category = document.getElementById("list-category").value;
 
     var todo = {
@@ -79,11 +61,11 @@ function addNewTodo() {
         category: category
     }
 
-    //4 add new todo to todoslist
+   
     todos.push(todo); 
     sessionStorage.setItem("id", todo.id );
     sessionStorage.setItem("data", JSON.stringify(todos));
-    //5 Call UpdateHtmlTable function
+   
     clearForm();
     updateHtmlTable();
     
@@ -161,14 +143,12 @@ function editEntry(id){
 
 function activateEditMode(todo){
     console.log(todo);
-    //Get Html elements of Name, description
+   
     document.getElementById("list-item").value = todo.item;
     document.getElementById("list-quantity").value = todo.quantity;
     document.getElementById("list-category").value = todo.category;
     document.getElementById("shoplist-id").value = todo.id;
 
-    //Update those html elements with todo.name, todo.description
-    //Unhide the EditButton
     document.getElementById("edit-btn").style = "";
     document.getElementById("submit-btn").style = "display:none";
 }
