@@ -235,3 +235,10 @@ show.addEventListener('click', function() {
     document.getElementById("form").classList.remove('hidden');
     show.classList.add('hidden');
 });
+
+let select = document.getElementById("select");
+select.addEventListener('change', function() {
+    console.log(select.value);
+    generateHtmlTable();
+});
+
