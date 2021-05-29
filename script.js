@@ -223,3 +223,15 @@ function activateEditBtns() {
         });
     }
 }
+
+let hide = document.getElementById("hide");
+let show = document.getElementById("show");
+
+hide.addEventListener('click', function() {
+    document.getElementById("form").classList.add('hidden');
+    show.classList.remove('hidden');
+});
+show.addEventListener('click', function() {
+    document.getElementById("form").classList.remove('hidden');
+    show.classList.add('hidden');
+});

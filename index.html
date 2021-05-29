@@ -27,6 +27,9 @@
           text-align: center;
           padding: 20px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
   </head>
   <body>
@@ -34,7 +37,7 @@
           <h2 class="text-center mb-4">Shoping List</h2>
           <div class="row">
             <div class="col-3"></div>
-              <div class="col-6">
+              <div id="form" class="col-6 hidden">
                 <div id="error"></div>
                 <form>
                     <div class="mb-3">
@@ -58,32 +61,9 @@
                     <div id="hide" class="btn btn-success">Hide</div>
                   </form>
               </div>
-
-              <div class="col-3"></div>
-
-        </div>
-        <div class="row">
-            <div class="col-5"></div>
-            <div class="col-4">
-                <div id="show" class="btn btn-success ">Show</div>
-            </div>
-            <div class="col-3"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-md-6">
-                <select class="form-select" id="select">
-                    <option value="0">Show all</option>
-                </select>
-            </div>
-            <div class="col-3"></div>
-        </div>
-
-
-
               <div class="col-3"></div>
               <div class="col-12">
+                <div id="show" class="btn btn-success">Show</div>
                 <table class="table" >
                     <thead>
                       <tr>
