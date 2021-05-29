@@ -5,10 +5,10 @@ let globalVariable = 5;
 updateHtmlTable();
 function updateHtmlTable() {
     let generatedHtml = "";
-    let shoplist = JSON.parse( sessionStorage.getItem('data')  );
+    let shoplist = JSON.parse( localStorage.getItem('data')  );
     if(shoplist === null){
-        sessionStorage.setItem("data", JSON.stringify( [] ));
-        sessionStorage.setItem("id", "0");
+        localStorage.setItem("data", JSON.stringify( [] ));
+        localStorage.setItem("id", "0");
         return;
     }
     for (let i = 0; i < shoplist.length; i++) {
@@ -45,7 +45,7 @@ function addNewTodo() {
         return;
     }
   
-    let todos = JSON.parse( sessionStorage.getItem('data')  ); 
+    let todos = JSON.parse( localStorage.getItem('data')  ); 
     
    
     let itemValue = document.getElementById("list-item").value;
@@ -55,7 +55,7 @@ function addNewTodo() {
     let category = document.getElementById("list-category").value;
 
     var todo = {
-        id:  parseInt(sessionStorage.getItem("id")) + 1,
+        id:  parseInt(localStorage.getItem("id")) + 1,
         item: itemValue,
         quantity: quantity,
         category: category
@@ -63,8 +63,8 @@ function addNewTodo() {
 
    
     todos.push(todo); 
-    sessionStorage.setItem("id", todo.id );
-    sessionStorage.setItem("data", JSON.stringify(todos));
+    localStorage.setItem("id", todo.id );
+    localStorage.setItem("data", JSON.stringify(todos));
    
     clearForm();
     updateHtmlTable();
@@ -133,7 +133,7 @@ function isValid(id) {
 
 function editEntry(id){
     
-    let todos = JSON.parse( sessionStorage.getItem('data')  ); 
+    let todos = JSON.parse( localStorage.getItem('data')  ); 
     for (let i = 0; i < todos.length; i++) { 
         if( `edit-${todos[i].id}` == id){
             activateEditMode(todos[i]);
@@ -159,7 +159,7 @@ function editTodo(){
     }
     
 
-    let todos = JSON.parse( sessionStorage.getItem('data')  ); 
+    let todos = JSON.parse( localStorage.getItem('data')  ); 
     let todo = {
         "id": "",
         "item": "",
@@ -179,7 +179,7 @@ function editTodo(){
             break;
         }
     }
-    sessionStorage.setItem("data", JSON.stringify(todos));
+    localStorage.setItem("data", JSON.stringify(todos));
 
     updateHtmlTable();
 
@@ -190,14 +190,14 @@ function editTodo(){
 
 function deleteEntry(id) {
     
-    let todos = JSON.parse( sessionStorage.getItem('data')  ); 
+    let todos = JSON.parse( localStorage.getItem('data')  ); 
    for (let i = 0; i < todos.length; i++) { 
        if( todos[i].id == id){
            todos.splice(i,1);
            break;
        }
    }
-   sessionStorage.setItem("data", JSON.stringify(todos));
+   localStorage.setItem("data", JSON.stringify(todos));
 
    updateHtmlTable();
 }
