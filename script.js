@@ -4,15 +4,23 @@ let globalVariable = 5;
 
 updateHtmlTable();
 function updateHtmlTable() {
+    
     let generatedHtml = "";
     let shoplist = JSON.parse( localStorage.getItem('data')  );
+    let select = document.getElementById("select");
+
     if(shoplist === null){
         localStorage.setItem("data", JSON.stringify( [] ));
         localStorage.setItem("id", "0");
         return;
     }
     for (let i = 0; i < shoplist.length; i++) {
-        const shopinglist = shoplist[i]; 
+        const shopinglist = shoplist[i];
+        if(select.value != "0"){
+            if(select.value != shopinglist.category);
+            continue;
+        }
+         
         
         let tableRow = `<tr>
 
@@ -239,6 +247,25 @@ show.addEventListener('click', function() {
 let select = document.getElementById("select");
 select.addEventListener('change', function() {
     console.log(select.value);
-    generateHtmlTable();
+    updateHtmlTable();
 });
 
+categorySelect();
+function categorySelect() {
+
+let shoplist = JSON.parse( localStorage.getItem('data')  );
+let select = document.getElementById("select");
+let categories = [];
+let HTML = "";
+
+shoplist.forEach(item => {
+    if (!categories.includes(item.category)) {
+        categories.push(item.category)
+    }
+});
+categories.forEach(category => {
+    HTML += `<option value = "${category}" >${category}</option>`
+});
+select.innerHTML += HTML;
+
+}
